@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartElevatorApp.InfoPage" BackgroundColor="DarkGray">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" >
+            <Label Text="&#x0a;Diese Software gilt als Beispielansatz für einen ferngesteurten Aufzug.&#x0a;Haben Sie Spaß daran.&#x0a;&#x0a;Grüße&#x0a;Brandon Njimefo&#x0a;s0554918@htw-berlin.de"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="20" TextColor="Black" FontAttributes="Bold" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

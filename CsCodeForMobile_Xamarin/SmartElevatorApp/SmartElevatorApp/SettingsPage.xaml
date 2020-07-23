@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartElevatorApp.SettingsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout >
+
+                <Label Text="URL des Servers" TextColor="Black" Margin="10" ></Label>
+                <Entry x:Name="serverUrlEntry" TextColor="Black" TextChanged="ServerUrlEntry_OnTextChanged"></Entry>
+                <Button  x:Name="updateBtn" Text="Aktualisieren" BackgroundColor="Lime" FontSize="15" TextColor="Black" />
+                <Label  Text="Benutzername" TextColor="Black" Margin="10" ></Label>
+                <Entry x:Name="usernameInput" Text="Test" IsEnabled="False" TextColor="Black" ></Entry>
+                <Label Text="Passwort" TextColor="Black" Margin="10" ></Label>
+                <Entry x:Name="paswwordEntry" IsPassword="True" Text="Test_360" IsEnabled="False" TextColor="Black" ></Entry>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

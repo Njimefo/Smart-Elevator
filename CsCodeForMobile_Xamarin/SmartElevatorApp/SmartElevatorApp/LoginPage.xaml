@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartElevatorApp.LoginPage">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" HorizontalOptions="FillAndExpand">
+        <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="500" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout BackgroundColor="Lime" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="Smart Elevator Logging" TextColor="Black" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="20" />
+            </StackLayout>
+            <StackLayout Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,80,0,0">
+                <Entry x:Name="nameEntry" Placeholder="Benutzername" TextColor="Black" Keyboard="Email" />
+                <Entry x:Name="passwordEntry" Placeholder="Passwort" IsPassword="true" TextColor="Black" Keyboard="Default" />
+                <StackLayout Orientation="Horizontal" Padding="15">
+                    <Switch x:Name="logDataSaveSwitch" />
+                    <Label Text="Loginsdaten merken" />
+                </StackLayout>
+                <Button Text="Einloggen" BackgroundColor="Lime" Clicked="Button_Loggin_Login_Clicked"/>
+                <Label Text="Passwort vergessen ?" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="20" Margin="0,10,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Passwort_Ruecksetzen_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label />
+                <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
+                <Label />
+                <Label Text="Neu bei uns ?" TextColor="Blue" FontSize="20" Margin="0,10,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Style="{DynamicResource SignupHeaderLabel}"/>
+                <Button x:Name="Button_Registrieren_Login" Text="Registrieren" BackgroundColor="Gray" Clicked="Button_Registrieren_Login_Clicked" />
+                <Label />
+                <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
+                <Label />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Start" HorizontalOptions="Center">
+                <Label Text="Deutsch" TextColor="Black" />
+                <Label Text="Englisch" TextColor="Blue" />
+                <Label Text="@Smart Elveator 2018 1.0 " />
+            </StackLayout>
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

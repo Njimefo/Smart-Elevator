@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:calendar="clr-namespace:Xuni.Forms.Calendar;assembly=Xuni.Forms.Calendar"
+             xmlns:widget="clr-namespace:Android.Widget;assembly=Mono.Android"
+             xmlns:graphics="clr-namespace:Android.Graphics;assembly=Mono.Android"
+             x:Class="SmartElevatorApp.Startseite">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <OnPlatform  x:Key="MicrophonImage" x:TypeArguments="FileImageSource">
+                <On Platform="Android">Microphone.png</On>
+                <On Platform="iOS">Microphone.png</On>
+                <On Platform="WinPhone">Microphone.png</On>
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Aktuelle Position"></Label>
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="80 cm"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Aktuelle Etage"></Label>
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="1"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegungsstatus 1"></Label>
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegung detektiert"></Label>
+                    </StackLayout>
+                </Frame>
+
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegungsstatus 2"></Label>
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegung nicht detektiert"></Label>
+                    </StackLayout>
+                </Frame>
+
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegungsstatus 3"></Label>
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegung detektiert"></Label>
+                    </StackLayout>
+                </Frame>
+
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegungsstatus 4"></Label>
+                        <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Text="Bewegung nicht detektiert"></Label>
+                    </StackLayout>
+                </Frame>
+                <Label TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="Gehe zu"></Label>
+
+
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Button TextColor="Black"  HorizontalOptions="FillAndExpand"  Text="E" FontSize="15" BackgroundColor="SpringGreen"></Button>
+                        <Button TextColor="Black"  HorizontalOptions="FillAndExpand"  Text="1" FontSize="15" BackgroundColor="SpringGreen"></Button>
+                    </StackLayout>
+                </Frame>
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Button TextColor="Black"  HorizontalOptions="FillAndExpand" Text="2" FontSize="15" BackgroundColor="SpringGreen"></Button>
+                        <Button TextColor="Black"  HorizontalOptions="FillAndExpand" Text="3" FontSize="15" BackgroundColor="SpringGreen"></Button>
+                    </StackLayout>
+                </Frame>
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Button x:Name="speechStartRecordBtn" TextColor="Black"  HorizontalOptions="FillAndExpand" Text="Sprachbefehl Start" FontSize="13" BackgroundColor="SpringGreen" Clicked="SpeechStartRecordBtn_OnClicked"></Button>
+                        <Button x:Name="speechStopRecordBtn" TextColor="Black"  HorizontalOptions="FillAndExpand" Text="Sprachbefehl Stop" IsEnabled="False" FontSize="13" BackgroundColor="SpringGreen" Clicked="SpeechStopRecordBtn_OnClicked"></Button>
+                    </StackLayout>
+                </Frame>
+                <Frame OutlineColor="Black" CornerRadius="10" HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Entry x:Name="commandEntry"  Placeholder="schriftlichen Befehl eingeben" Keyboard="Chat" ></Entry>
+                        <Button TextColor="Black"  HorizontalOptions="FillAndExpand" Text="Senden" FontSize="13" BackgroundColor="SpringGreen" Clicked="CommandSend_Clicked" ></Button>
+                    </StackLayout>
+                </Frame>
+                    <!--<Button HorizontalOptions="Center" VerticalOptions="FillAndExpand" >
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                                  Android="../Resources/drawable/Microphone.png" />
+                    </Button.Image>
+                </Button>-->
+
+                <!--<Button x:Name="recordBtn" HorizontalOptions="Center" Image="{StaticResource MicrophonImage}" VerticalOptions="FillAndExpand" >
+
+                </Button>-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SmartElevatorApp;assembly=SmartElevatorApp.Android"
+             x:Class="SmartElevatorApp.CommandPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <!-- Normal Page Content --><!--
+            <ScrollView AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All">-->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         AbsoluteLayout.LayoutFlags="All">
+                    <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Text="Sortieren nach"/>
+
+                    <Frame OutlineColor="Blue" CornerRadius="10" BackgroundColor="Gainsboro" HasShadow="True">
+                        <Picker x:Name="sortByPicker" SelectedIndex="1" HorizontalOptions="FillAndExpand"  >
+                            <Picker.Items >
+                                <x:String>Datum oder Uhrzeit</x:String>
+                                <x:String>Etage</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+                    <Frame OutlineColor="Blue" CornerRadius="10" BackgroundColor="Gainsboro" HasShadow="True">
+
+                        <Picker x:Name="sortAscPicker" SelectedIndex="1" HorizontalOptions="FillAndExpand"  >
+                            <Picker.Items >
+                                <x:String>Absteigend</x:String>
+                                <x:String>Aufsteigend</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+
+                    <ListView x:Name="commandList" >
+                        <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                                            </Grid.ColumnDefinitions>
+                                            <ScrollView Grid.Column="0" >
+                                                <Frame  OutlineColor="Black">
+                                                    <Label HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="{Binding Date}" ></Label>
+                                                </Frame>
+                                            </ScrollView>
+                                            <ScrollView Grid.Column="1" >
+                                                <Frame OutlineColor="Black">
+                                                    <Label HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="{Binding Time}" ></Label>
+                                                </Frame>
+                                            </ScrollView>
+                                            <ScrollView Grid.Column="2" >
+                                                <Frame  OutlineColor="Black">
+                                                    <Label HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="{Binding Etage}" ></Label>
+                                                </Frame>
+                                            </ScrollView>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    
+                    <StackLayout Orientation="Horizontal">
+
+                        <Button Text="Neue Bestellung" FontSize="13" TextColor="Black" FontAttributes="Bold" BackgroundColor="LawnGreen"
+                                Clicked="OnButtonClicked" />
+                        <Button Text="Bestellung(en) löschen" FontSize="13" TextColor="Black" FontAttributes="Bold" BackgroundColor="Red"
+                               />
+                    </StackLayout>
+                </StackLayout>
+            <!--</ScrollView>-->
+            
+            <ContentView x:Name="overlay"
+                         
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         IsVisible="False"
+                         BackgroundColor="#C0808080"
+                         Padding="10, 0">
+                
+                <ScrollView
+                           Orientation="Vertical"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Margin="0,20,0,0">
+                    
+                    <StackLayout Orientation="Vertical"
+                             BackgroundColor="White"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Margin="0" >
+
+                        <Label BackgroundColor="Lime"
+                           FontSize="18"
+                           Margin="0"
+                           VerticalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           HeightRequest="60"
+                           TextColor="Black"
+                           Text="Neue Bestellung" />
+
+                        <Label
+                        TextColor="Black"
+                        HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="StartAndExpand"
+                        FontAttributes="Bold"
+                        Text="Etage"/>
+
+                        <Picker x:Name="etagePicker" SelectedItem="Edgeschoss" HorizontalOptions="FillAndExpand"  >
+                            <Picker.Items >
+                                <x:String>Erdgeschoss</x:String>
+                                <x:String>Erste Etage</x:String>
+                                <x:String>Zweite Etage</x:String>
+                                <x:String>Dritte Etage</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Label
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        Text="Datum"/>
+                        <DatePicker 
+                        x:Name="datePicker"
+                         MinimumDate="01.06.2018"
+                        HorizontalOptions="CenterAndExpand"
+                        ></DatePicker>
+                        <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        HorizontalTextAlignment="Center"
+                        Text="Uhrzeit"/>
+                        <TimePicker 
+                        x:Name="timePicker"
+                        Format="__:__"
+                        HorizontalOptions="CenterAndExpand"
+                        ></TimePicker>
+
+                        <Button Text="Hinzufügen" FontSize="18" TextColor="Black" FontAttributes="Bold" BackgroundColor="LawnGreen"
+                                Clicked="OnOKButtonClicked" />
+                        <Button Text="Abbrechen" FontSize="18" TextColor="Black" FontAttributes="Bold" BackgroundColor="Red"
+                                Clicked="OnCancelButtonClicked"/>
+
+
+                    </StackLayout>
+                    
+                </ScrollView>
+                
+            </ContentView>
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
